@@ -12,9 +12,11 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from a import a_pb2 as a_dot_a__pb2
+from b import b_pb2 as b_dot_b__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nroot.proto\"\x1b\n\x0bMessageRoot\x12\x0c\n\x04Name\x18\x01 \x01(\tb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nroot.proto\x12\x04root\x1a\ta/a.proto\x1a\tb/b.proto\"M\n\x0bMessageRoot\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x17\n\x02MA\x18\x02 \x01(\x0b\x32\x0b.a.MessageA\x12\x17\n\x02MB\x18\x03 \x01(\x0b\x32\x0b.b.MessageBb\x06proto3')
 
 
 
@@ -22,13 +24,13 @@ _MESSAGEROOT = DESCRIPTOR.message_types_by_name['MessageRoot']
 MessageRoot = _reflection.GeneratedProtocolMessageType('MessageRoot', (_message.Message,), {
   'DESCRIPTOR' : _MESSAGEROOT,
   '__module__' : 'root_pb2'
-  # @@protoc_insertion_point(class_scope:MessageRoot)
+  # @@protoc_insertion_point(class_scope:root.MessageRoot)
   })
 _sym_db.RegisterMessage(MessageRoot)
 
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _MESSAGEROOT._serialized_start=14
-  _MESSAGEROOT._serialized_end=41
+  _MESSAGEROOT._serialized_start=42
+  _MESSAGEROOT._serialized_end=119
 # @@protoc_insertion_point(module_scope)

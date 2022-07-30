@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tb/b.proto\"\x18\n\x08MessageB\x12\x0c\n\x04Name\x18\x01 \x01(\tb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tb/b.proto\x12\x01\x62\"\x18\n\x08MessageB\x12\x0c\n\x04Name\x18\x01 \x01(\tb\x06proto3')
 
 
 
@@ -22,13 +22,13 @@ _MESSAGEB = DESCRIPTOR.message_types_by_name['MessageB']
 MessageB = _reflection.GeneratedProtocolMessageType('MessageB', (_message.Message,), {
   'DESCRIPTOR' : _MESSAGEB,
   '__module__' : 'b.b_pb2'
-  # @@protoc_insertion_point(class_scope:MessageB)
+  # @@protoc_insertion_point(class_scope:b.MessageB)
   })
 _sym_db.RegisterMessage(MessageB)
 
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _MESSAGEB._serialized_start=13
-  _MESSAGEB._serialized_end=37
+  _MESSAGEB._serialized_start=16
+  _MESSAGEB._serialized_end=40
 # @@protoc_insertion_point(module_scope)

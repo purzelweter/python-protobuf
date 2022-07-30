@@ -1,5 +1,9 @@
 syntax = "proto3";
+package a;
+
+import "b/b.proto";
 
 message MessageA {
     string Name = 1;
+    b.MessageB MB = 2;
 }
