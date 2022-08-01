@@ -18,88 +18,88 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// RootServiceClient is the client API for RootService service.
+// RootClient is the client API for Root service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type RootServiceClient interface {
+type RootClient interface {
 	// Greeting greets the request and returns the current time.
 	Greeting(ctx context.Context, in *GreetingRequest, opts ...grpc.CallOption) (*GreetingResponse, error)
 }
 
-type rootServiceClient struct {
+type rootClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewRootServiceClient(cc grpc.ClientConnInterface) RootServiceClient {
-	return &rootServiceClient{cc}
+func NewRootClient(cc grpc.ClientConnInterface) RootClient {
+	return &rootClient{cc}
 }
 
-func (c *rootServiceClient) Greeting(ctx context.Context, in *GreetingRequest, opts ...grpc.CallOption) (*GreetingResponse, error) {
+func (c *rootClient) Greeting(ctx context.Context, in *GreetingRequest, opts ...grpc.CallOption) (*GreetingResponse, error) {
 	out := new(GreetingResponse)
-	err := c.cc.Invoke(ctx, "/root.RootService/Greeting", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/root.Root/Greeting", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// RootServiceServer is the server API for RootService service.
-// All implementations must embed UnimplementedRootServiceServer
+// RootServer is the server API for Root service.
+// All implementations must embed UnimplementedRootServer
 // for forward compatibility
-type RootServiceServer interface {
+type RootServer interface {
 	// Greeting greets the request and returns the current time.
 	Greeting(context.Context, *GreetingRequest) (*GreetingResponse, error)
-	mustEmbedUnimplementedRootServiceServer()
+	mustEmbedUnimplementedRootServer()
 }
 
-// UnimplementedRootServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedRootServiceServer struct {
+// UnimplementedRootServer must be embedded to have forward compatible implementations.
+type UnimplementedRootServer struct {
 }
 
-func (UnimplementedRootServiceServer) Greeting(context.Context, *GreetingRequest) (*GreetingResponse, error) {
+func (UnimplementedRootServer) Greeting(context.Context, *GreetingRequest) (*GreetingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Greeting not implemented")
 }
-func (UnimplementedRootServiceServer) mustEmbedUnimplementedRootServiceServer() {}
+func (UnimplementedRootServer) mustEmbedUnimplementedRootServer() {}
 
-// UnsafeRootServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to RootServiceServer will
+// UnsafeRootServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RootServer will
 // result in compilation errors.
-type UnsafeRootServiceServer interface {
-	mustEmbedUnimplementedRootServiceServer()
+type UnsafeRootServer interface {
+	mustEmbedUnimplementedRootServer()
 }
 
-func RegisterRootServiceServer(s grpc.ServiceRegistrar, srv RootServiceServer) {
-	s.RegisterService(&RootService_ServiceDesc, srv)
+func RegisterRootServer(s grpc.ServiceRegistrar, srv RootServer) {
+	s.RegisterService(&Root_ServiceDesc, srv)
 }
 
-func _RootService_Greeting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Root_Greeting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GreetingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RootServiceServer).Greeting(ctx, in)
+		return srv.(RootServer).Greeting(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/root.RootService/Greeting",
+		FullMethod: "/root.Root/Greeting",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RootServiceServer).Greeting(ctx, req.(*GreetingRequest))
+		return srv.(RootServer).Greeting(ctx, req.(*GreetingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// RootService_ServiceDesc is the grpc.ServiceDesc for RootService service.
+// Root_ServiceDesc is the grpc.ServiceDesc for Root service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var RootService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "root.RootService",
-	HandlerType: (*RootServiceServer)(nil),
+var Root_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "root.Root",
+	HandlerType: (*RootServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Greeting",
-			Handler:    _RootService_Greeting_Handler,
+			Handler:    _Root_Greeting_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

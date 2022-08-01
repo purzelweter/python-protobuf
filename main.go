@@ -9,6 +9,17 @@ import (
 	"google.golang.org/grpc/encoding/gzip"
 )
 
+type userInfoKey struct{}
+
+type UserInfo struct {
+	ID         uint32
+	Name       string // Username
+	CommonName string
+	Givenname  string
+	Surname    string
+	EMail      string
+}
+
 const messageSize = 1024 * 1024 * 200 // 100MB
 
 func main() {
@@ -19,14 +30,21 @@ func main() {
 }
 
 func do() error {
-	ctx := context.Background()
+	ctx := context.WithValue(context.Background(), userInfoKey{}, UserInfo{
+		ID:         31415,
+		Name:       "max.mustermann@example.com",
+		CommonName: "Max Mustermann",
+		Givenname:  "Max",
+		Surname:    "Mustermann",
+		EMail:      "max.mustermann@example.com",
+	})
 
 	// connect to server
 	conn, err := grpc.DialContext(ctx, ":8080", grpc.WithInsecure(), grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(messageSize), grpc.UseCompressor(gzip.Name)))
 	if err != nil {
 		return fmt.Errorf("connect to grpc server: %v", err)
 	}
-	c := NewRootServiceClient(conn)
+	c := NewRootClient(conn)
 
 	res, err := c.Greeting(ctx, &GreetingRequest{
 		Name: "Testuser",

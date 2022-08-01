@@ -7,8 +7,6 @@ from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import service as _service
-from google.protobuf import service_reflection
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,7 +16,7 @@ from a import a_pb2 as a_dot_a__pb2
 from b import b_pb2 as b_dot_b__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nroot.proto\x12\x04root\x1a\ta/a.proto\x1a\tb/b.proto\"Q\n\x0fGreetingRequest\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x17\n\x02MA\x18\x02 \x01(\x0b\x32\x0b.a.MessageA\x12\x17\n\x02MB\x18\x03 \x01(\x0b\x32\x0b.b.MessageB\"%\n\x10GreetingResponse\x12\x11\n\tGreetedAt\x18\x01 \x01(\t2H\n\x0bRootService\x12\x39\n\x08Greeting\x12\x15.root.GreetingRequest\x1a\x16.root.GreetingResponseB%Z purzelweter/python-protobuf/main\x90\x01\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nroot.proto\x12\x04root\x1a\ta/a.proto\x1a\tb/b.proto\"Q\n\x0fGreetingRequest\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x17\n\x02MA\x18\x02 \x01(\x0b\x32\x0b.a.MessageA\x12\x17\n\x02MB\x18\x03 \x01(\x0b\x32\x0b.b.MessageB\"%\n\x10GreetingResponse\x12\x11\n\tGreetedAt\x18\x01 \x01(\t2A\n\x04Root\x12\x39\n\x08Greeting\x12\x15.root.GreetingRequest\x1a\x16.root.GreetingResponseB%Z purzelweter/python-protobuf/main\x90\x01\x00\x62\x06proto3')
 
 
 
@@ -38,26 +36,15 @@ GreetingResponse = _reflection.GeneratedProtocolMessageType('GreetingResponse', 
   })
 _sym_db.RegisterMessage(GreetingResponse)
 
-_ROOTSERVICE = DESCRIPTOR.services_by_name['RootService']
+_ROOT = DESCRIPTOR.services_by_name['Root']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z purzelweter/python-protobuf/main\220\001\001'
+  DESCRIPTOR._serialized_options = b'Z purzelweter/python-protobuf/main\220\001\000'
   _GREETINGREQUEST._serialized_start=42
   _GREETINGREQUEST._serialized_end=123
   _GREETINGRESPONSE._serialized_start=125
   _GREETINGRESPONSE._serialized_end=162
-  _ROOTSERVICE._serialized_start=164
-  _ROOTSERVICE._serialized_end=236
-RootService = service_reflection.GeneratedServiceType('RootService', (_service.Service,), dict(
-  DESCRIPTOR = _ROOTSERVICE,
-  __module__ = 'root_pb2'
-  ))
-
-RootService_Stub = service_reflection.GeneratedServiceStubType('RootService_Stub', (RootService,), dict(
-  DESCRIPTOR = _ROOTSERVICE,
-  __module__ = 'root_pb2'
-  ))
-
-
+  _ROOT._serialized_start=164
+  _ROOT._serialized_end=229
 # @@protoc_insertion_point(module_scope)

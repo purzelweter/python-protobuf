@@ -5,10 +5,10 @@ import "a/a.proto";
 import "b/b.proto";
 
 option go_package = "purzelweter/python-protobuf/main";
-option py_generic_services = true;
+option py_generic_services = false;
 
 // RootService is a grpc service.
-service RootService {
+service Root {
     // Greeting greets the request and returns the current time.
 	rpc Greeting(GreetingRequest) returns (GreetingResponse);
 }

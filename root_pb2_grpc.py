@@ -5,7 +5,7 @@ import grpc
 import root_pb2 as root__pb2
 
 
-class RootServiceStub(object):
+class RootStub(object):
     """RootService is a grpc service.
     """
 
@@ -16,13 +16,13 @@ class RootServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Greeting = channel.unary_unary(
-                '/root.RootService/Greeting',
+                '/root.Root/Greeting',
                 request_serializer=root__pb2.GreetingRequest.SerializeToString,
                 response_deserializer=root__pb2.GreetingResponse.FromString,
                 )
 
 
-class RootServiceServicer(object):
+class RootServicer(object):
     """RootService is a grpc service.
     """
 
@@ -34,7 +34,7 @@ class RootServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_RootServiceServicer_to_server(servicer, server):
+def add_RootServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Greeting': grpc.unary_unary_rpc_method_handler(
                     servicer.Greeting,
@@ -43,12 +43,12 @@ def add_RootServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'root.RootService', rpc_method_handlers)
+            'root.Root', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class RootService(object):
+class Root(object):
     """RootService is a grpc service.
     """
 
@@ -63,7 +63,7 @@ class RootService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/root.RootService/Greeting',
+        return grpc.experimental.unary_unary(request, target, '/root.Root/Greeting',
             root__pb2.GreetingRequest.SerializeToString,
             root__pb2.GreetingResponse.FromString,
             options, channel_credentials,
