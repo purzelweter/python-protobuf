@@ -1,6 +1,8 @@
 syntax = "proto3";
 package b;
 
+option go_package = "purzelweter/python-protobuf/b";
+
 message MessageB {
     string Name = 1;
 }

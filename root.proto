@@ -4,8 +4,23 @@ package root;
 import "a/a.proto";
 import "b/b.proto";
 
-message MessageRoot {
+option go_package = "purzelweter/python-protobuf/main";
+option py_generic_services = true;
+
+// RootService is a grpc service.
+service RootService {
+    // Greeting greets the request and returns the current time.
+	rpc Greeting(GreetingRequest) returns (GreetingResponse);
+}
+
+// GreetingRequest defines a request.
+message GreetingRequest {
+    // Who should be greeted.
     string Name = 1;
     a.MessageA MA = 2;
     b.MessageB MB = 3;
+}
+
+message GreetingResponse {
+     string GreetedAt = 1;
 }

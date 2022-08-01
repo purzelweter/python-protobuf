@@ -2,3 +2,69 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
+import root_pb2 as root__pb2
+
+
+class RootServiceStub(object):
+    """RootService is a grpc service.
+    """
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.Greeting = channel.unary_unary(
+                '/root.RootService/Greeting',
+                request_serializer=root__pb2.GreetingRequest.SerializeToString,
+                response_deserializer=root__pb2.GreetingResponse.FromString,
+                )
+
+
+class RootServiceServicer(object):
+    """RootService is a grpc service.
+    """
+
+    def Greeting(self, request, context):
+        """Greeting greets the request and returns the current time.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_RootServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'Greeting': grpc.unary_unary_rpc_method_handler(
+                    servicer.Greeting,
+                    request_deserializer=root__pb2.GreetingRequest.FromString,
+                    response_serializer=root__pb2.GreetingResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'root.RootService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class RootService(object):
+    """RootService is a grpc service.
+    """
+
+    @staticmethod
+    def Greeting(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/root.RootService/Greeting',
+            root__pb2.GreetingRequest.SerializeToString,
+            root__pb2.GreetingResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from b import b_pb2 as b_dot_b__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ta/a.proto\x12\x01\x61\x1a\tb/b.proto\"1\n\x08MessageA\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x17\n\x02MB\x18\x02 \x01(\x0b\x32\x0b.b.MessageBb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ta/a.proto\x12\x01\x61\x1a\tb/b.proto\"1\n\x08MessageA\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x17\n\x02MB\x18\x02 \x01(\x0b\x32\x0b.b.MessageBB\x1fZ\x1dpurzelweter/python-protobuf/ab\x06proto3')
 
 
 
@@ -30,6 +30,7 @@ _sym_db.RegisterMessage(MessageA)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z\035purzelweter/python-protobuf/a'
   _MESSAGEA._serialized_start=27
   _MESSAGEA._serialized_end=76
 # @@protoc_insertion_point(module_scope)
